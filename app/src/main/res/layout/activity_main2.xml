@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#"
+    android:background="#E3F2FD"
     tools:context="com.firstapp.joel.walgreens.MainActivity">
         <ListView
             android:id="@+id/myList"
@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="?android:attr/windowBackground"
+        android:background="#E3F2FD"
         app:menu="@menu/navigation" />
 
 </LinearLayout>
