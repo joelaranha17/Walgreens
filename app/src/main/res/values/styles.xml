@@ -4,6 +4,7 @@
         <style name="AppTheme"
             parent="Theme.AppCompat.Light.DarkActionBar">
             <item name="colorPrimary">#2196F3</item>
+            <item name="actionBarSize">70dp</item>
             <item name="actionBarStyle">@style/MyActionBar</item>
         </style>
 
@@ -11,8 +12,7 @@
         <style name="MyActionBar"
             parent="Widget.AppCompat.Light.ActionBar.Solid">
             <item name="displayOptions">showHome|useLogo</item>
-            <item name="logo">@mipmap/walgreens</item>
-        <!-- Customize your theme here. -->
+            <item name="logo">@mipmap/walgreens</item><!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>

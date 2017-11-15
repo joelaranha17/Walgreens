@@ -1,6 +1,7 @@
 package com.firstapp.joel.walgreens;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,15 +70,46 @@ public class MyAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 String item = myitems[postion];
-                Toast.makeText(context, "item clicked " + item, Toast.LENGTH_SHORT).show();
-
-            }
+                if(item.equals("Prescriptions & Health")) {
+                    Intent intent1 = new Intent(context, SecondActivity.class);
+                    context.startActivity(intent1);
+                }
+                else if(item.equals("Shop Products")) {
+                    Intent intent2 = new Intent(context, Third.class);
+                    context.startActivity(intent2);
+                }
+                else if(item.equals("Photo")) {
+                    Intent intent3 = new Intent(context, Fourth.class);
+                    context.startActivity(intent3);
+                }
+                else {
+                    Intent intent4 = new Intent(context, Fifth.class);
+                    context.startActivity(intent4);
+                }
+                    Toast.makeText(context, "item clicked " + item, Toast.LENGTH_SHORT).show();
+                }
         });
+
         myViewHolder.iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String item = myitems[postion];
-                //Intent intent = new Intent(context, SecondActivity.class);
+                if(item.equals("Prescriptions & Health")) {
+                    Intent intent1 = new Intent(context, SecondActivity.class);
+                    context.startActivity(intent1);
+                }
+                else if(item.equals("Shop Products")) {
+                    Intent intent2 = new Intent(context, Third.class);
+                    context.startActivity(intent2);
+                }
+                else if(item.equals("Photo")) {
+                    Intent intent3 = new Intent(context, Fourth.class);
+                    context.startActivity(intent3);
+                }
+                else {
+                    Intent intent4 = new Intent(context, Fifth.class);
+                    context.startActivity(intent4);
+                }
                 Toast.makeText(context, "item clicked " + item, Toast.LENGTH_SHORT).show();
 
 

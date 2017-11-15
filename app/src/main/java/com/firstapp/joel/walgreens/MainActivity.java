@@ -27,13 +27,19 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+/*
                     mTextMessage.setText("Refill by \n Scan ");
+*/
                     return true;
                 case R.id.navigation_dashboard:
+/*
                     mTextMessage.setText("Balance \n Rewards");
+*/
                     return true;
                 case R.id.navigation_notifications:
+/*
                     mTextMessage.setText("Find a \n Store");
+*/
                     return true;
             }
             return false;

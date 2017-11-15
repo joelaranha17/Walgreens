@@ -4,16 +4,16 @@
 
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/rewards"
+        android:icon="@drawable/walgreens"
         android:title="Balance Rewards" />
 
     <item
         android:id="@+id/navigation_notifications"
-        android:icon="@drawable/find"
+        android:icon="@drawable/walgreens"
         android:title="Find a Store" />
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/refill"
+        android:icon="@drawable/walgreens"
         android:title="Refill by Scan" />
 
 </menu>
