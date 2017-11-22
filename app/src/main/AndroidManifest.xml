@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashScreen"
+            android:name=".util.one.SplashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,17 +18,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".util.one.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity" />
-        <activity android:name=".Third" />
-        <activity android:name=".Fourth" />
-        <activity android:name=".Fifth"></activity>
+        <activity android:name=".util.Login.SecondActivity" />
+        <activity android:name=".util.three.Third" />
+        <activity android:name=".util.four.Fourth" />
+        <activity android:name=".util.five.Fifth"></activity>
     </application>
 
 </manifest>

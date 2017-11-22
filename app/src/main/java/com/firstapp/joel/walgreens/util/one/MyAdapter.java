@@ -1,4 +1,4 @@
-package com.firstapp.joel.walgreens;
+package com.firstapp.joel.walgreens.util.one;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.firstapp.joel.walgreens.util.five.Fifth;
+import com.firstapp.joel.walgreens.util.four.Fourth;
+import com.firstapp.joel.walgreens.R;
+import com.firstapp.joel.walgreens.util.Login.SecondActivity;
+import com.firstapp.joel.walgreens.util.three.Third;
 
 /**
  * Created by joel on 11/13/2017.

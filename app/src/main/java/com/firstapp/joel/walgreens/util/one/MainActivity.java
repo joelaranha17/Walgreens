@@ -1,4 +1,4 @@
-package com.firstapp.joel.walgreens;
+package com.firstapp.joel.walgreens.util.one;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +9,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.firstapp.joel.walgreens.R;
 
 public class MainActivity extends AppCompatActivity {
 

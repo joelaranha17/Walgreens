@@ -1,13 +1,15 @@
-package com.firstapp.joel.walgreens;
+package com.firstapp.joel.walgreens.util.three;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Fifth extends AppCompatActivity {
+import com.firstapp.joel.walgreens.R;
+
+public class Third extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fifth);
+        setContentView(R.layout.activity_third);
     }
 }

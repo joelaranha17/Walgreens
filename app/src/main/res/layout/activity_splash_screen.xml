@@ -6,15 +6,15 @@
     android:layout_height="match_parent"
     android:layout_centerHorizontal="false"
     android:background="#2196F3"
-    tools:context="com.firstapp.joel.walgreens.SplashScreen">
+    tools:context="com.firstapp.joel.walgreens.util.one.SplashScreen">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:layout_marginLeft="88dp"
+        android:layout_marginLeft="81dp"
         android:layout_marginStart="88dp"
-        android:layout_marginTop="121dp"
+        android:layout_marginTop="101dp"
         app:layout_constraintLeft_toLeftOf="@+id/splash_screen_progress_bar"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/walgreens"
@@ -23,7 +23,7 @@
 
     <ProgressBar
         android:id="@+id/splash_screen_progress_bar"
-        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_centerInParent="true"
@@ -33,13 +33,13 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:progressBackgroundTint="@android:color/holo_orange_light"
-        android:progressTint="@color/colorPrimaryDark"
+        android:progressTint="@android:color/holo_orange_dark"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"

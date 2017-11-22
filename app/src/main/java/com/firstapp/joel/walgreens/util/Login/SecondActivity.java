@@ -1,7 +1,9 @@
-package com.firstapp.joel.walgreens;
+package com.firstapp.joel.walgreens.util.Login;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.firstapp.joel.walgreens.R;
 
 public class SecondActivity extends AppCompatActivity {
 
