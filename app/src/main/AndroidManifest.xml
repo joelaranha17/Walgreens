@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.firstapp.joel.walgreens">
-
-    <application
+    <application>
         android:allowBackup="true"
         android:icon="@mipmap/walgreens"
         android:label="Walgreens"
@@ -10,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".util.one.SplashScreen"
+            android:name="com.firstapp.joel.walgreens.util.One.SplashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,17 +17,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".util.one.MainActivity">
+        <activity android:name=".util.One.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+        <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
         </activity>
-        <activity android:name=".util.Login.SecondActivity" />
-        <activity android:name=".util.three.Third" />
-        <activity android:name=".util.four.Fourth" />
-        <activity android:name=".util.five.Fifth"></activity>
+        <activity android:name="com.firstapp.joel.walgreens.util.Login.LoginActivity" />
+        <activity android:name="com.firstapp.joel.walgreens.util.Three.Third"/>
+        <activity android:name="com.firstapp.joel.walgreens.util.Four.Fourth"/>
+        <activity android:name="com.firstapp.joel.walgreens.util.Five.Fifth" />
+        <activity android:name="com.firstapp.joel.walgreens.util.Login.Register"></activity>
     </application>
 
 </manifest>

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#E3F2FD"
     android:orientation="vertical"
-    tools:context="com.firstapp.joel.walgreens.util.one.MainActivity"
+    tools:context="com.firstapp.joel.walgreens.util.One.MainActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="95dp">
 
@@ -29,62 +29,62 @@
         android:id="@+id/content"
         android:layout_width="374dp"
         android:layout_height="159dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="0dp"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginEnd="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        app:layout_constraintHorizontal_bias="1.0">
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1">
 
         <ImageButton
             android:id="@+id/imageButton5"
             android:layout_width="75dp"
             android:layout_height="0dp"
+            android:layout_marginLeft="48dp"
             android:layout_marginStart="16dp"
             android:background="#E3F2FD"
-            app:srcCompat="@mipmap/refil1"
-            tools:layout_constraintTop_creator="1"
-            tools:layout_constraintBottom_creator="1"
             app:layout_constraintBottom_toBottomOf="@+id/imageButton6"
-            tools:layout_constraintLeft_creator="1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageButton6"
-            android:layout_marginLeft="48dp"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@mipmap/refil1"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintTop_creator="1" />
 
         <ImageButton
             android:id="@+id/imageButton6"
             android:layout_width="75dp"
             android:layout_height="80dp"
-            android:background="#E3F2FD"
-            app:srcCompat="@mipmap/rewards"
-            tools:layout_constraintTop_creator="1"
-            tools:layout_constraintRight_creator="1"
-            app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="51dp"
-            tools:layout_constraintLeft_creator="1"
+            android:background="#E3F2FD"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.498" />
+            app:srcCompat="@mipmap/rewards"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintTop_creator="1" />
 
         <ImageButton
             android:id="@+id/imageButton8"
             android:layout_width="75dp"
             android:layout_height="0dp"
             android:background="#E3F2FD"
-            app:srcCompat="@mipmap/findstore"
-            tools:layout_constraintTop_creator="1"
-            tools:layout_constraintRight_creator="1"
-            tools:layout_constraintBottom_creator="1"
             app:layout_constraintBottom_toBottomOf="@+id/imageButton6"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageButton6" />
+            app:layout_constraintTop_toTopOf="@+id/imageButton6"
+            app:srcCompat="@mipmap/findstore"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintTop_creator="1" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -92,43 +92,43 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="29dp"
         android:layout_marginStart="29dp"
         android:clickable="true"
         android:text="Refill by \n Scan"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
-        tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="@+id/content"
         app:layout_constraintTop_toTopOf="@+id/textView3"
-        android:layout_marginLeft="29dp" />
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="47dp"
         android:clickable="true"
         android:text="Balance \n Rewards"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="47dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        tools:layout_constraintRight_creator="1" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
         android:text="Find a \n Store"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintRight_toRightOf="@+id/content"
         app:layout_constraintTop_toTopOf="@+id/textView3"
-        android:layout_marginRight="14dp" />
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
 </android.support.constraint.ConstraintLayout>
