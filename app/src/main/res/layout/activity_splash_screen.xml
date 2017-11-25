@@ -7,7 +7,7 @@
     android:layout_centerHorizontal="false"
     android:orientation="vertical"
     android:background="#2196F3"
-    tools:context="com.firstapp.joel.walgreens.util.One.SplashScreen">
+    tools:context="com.firstapp.joel.walgreens.util.one.SplashScreen">
 
     <ImageView
         android:id="@+id/imageView"

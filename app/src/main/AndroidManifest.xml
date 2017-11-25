@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.firstapp.joel.walgreens">
-    <application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".util.net.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/walgreens"
         android:label="Walgreens"
         android:roundIcon="@mipmap/walgreens"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name="com.firstapp.joel.walgreens.util.One.SplashScreen"
+        <activity android:name=".util.one.SplashScreen">
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,18 +20,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".util.One.MainActivity">
+        <activity android:name=".util.one.MainActivity">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-        <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
-        <activity android:name="com.firstapp.joel.walgreens.util.Login.LoginActivity" />
-        <activity android:name="com.firstapp.joel.walgreens.util.Three.Third"/>
-        <activity android:name="com.firstapp.joel.walgreens.util.Four.Fourth"/>
-        <activity android:name="com.firstapp.joel.walgreens.util.Five.Fifth" />
-        <activity android:name="com.firstapp.joel.walgreens.util.Login.Register"></activity>
+        <activity android:name=".util.login.LoginActivity" />
+        <activity android:name=".util.login.Register" />
+        <activity android:name=".util.Shopping.ShopItems" />
+        <activity android:name=".util.four.Fourth" />
+        <activity android:name=".util.five.Fifth" />
+        <activity android:name=".util.login.ForgotUsername" />
+        <activity android:name=".util.one.AccountSettings" />
+        <activity android:name=".util.login.ForgotPassword" />
+        <activity android:name=".util.one.Mailbox" />
     </application>
 
 </manifest>

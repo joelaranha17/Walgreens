@@ -1,44 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.firstapp.joel.walgreens.util.Login.LoginActivity"
-    tools:layout_editor_absoluteY="95dp">
+    tools:context="com.firstapp.joel.walgreens.util.login.LoginActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="3dp"
         android:fontFamily="serif"
         android:text="All fields required"
         android:textSize="12sp"
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginBottom="45dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="44dp"
         android:fontFamily="serif"
         android:text="Username"
         android:textColor="@color/colorActionBar"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/loginUsernameText"
-        app:layout_constraintStart_toStartOf="@+id/loginUsernameText" />
+        app:layout_constraintBottom_toBottomOf="@+id/loginUsernameText"
+        app:layout_constraintStart_toStartOf="@+id/loginUsernameText"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
 
     <EditText
         android:id="@+id/loginUsernameText"
         android:layout_width="0dp"
-        android:layout_height="49dp"
-        android:layout_marginBottom="52dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="62dp"
         android:layout_marginEnd="15dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="Enter Username"
         android:inputType="textPersonName"
@@ -50,9 +55,10 @@
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="153dp"
-        android:layout_marginTop="152dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="175dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="175dp"
         android:fontFamily="serif"
         android:text="Password"
         android:textColor="@color/colorActionBar"
@@ -65,36 +71,38 @@
         android:id="@+id/loginPasswordText"
         android:layout_width="0dp"
         android:layout_height="43dp"
-        android:layout_marginBottom="23dp"
+        android:layout_marginBottom="61dp"
         android:layout_marginEnd="15dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="62dp"
         android:ems="10"
         android:fontFamily="sans-serif"
         android:hint="Enter Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/switchSaveUname"
+        app:layout_constraintBottom_toBottomOf="@+id/switchSaveUname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/loginUsernameText" />
 
     <Switch
         android:id="@+id/switchSaveUname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="214dp"
+        android:layout_marginStart="16dp"
         android:fontFamily="serif"
         android:switchTextAppearance="@style/TextAppearance.AppCompat"
         android:text="Save Username"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Switch
         android:id="@+id/switchSavePword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="19dp"
+        android:layout_marginBottom="31dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="serif"
         android:text="Save Password"
         android:textSize="12sp"
@@ -106,23 +114,27 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="19dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="62dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="58dp"
         android:background="#00802b"
         android:text="LOGIN"
         android:textColor="@android:color/background_light"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/forgotPWordTextView"
+        app:layout_constraintBottom_toBottomOf="@+id/forgotUnameTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switchSaveUname" />
+        app:layout_constraintTop_toTopOf="@+id/switchSaveUname" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/forgotUnameTextView"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="20dp" />
 
@@ -130,50 +142,68 @@
         android:id="@+id/forgotUnameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="140dp"
+        android:layout_alignBaseline="@+id/forgotPWordTextView"
+        android:layout_alignBottom="@+id/forgotPWordTextView"
+        android:layout_alignStart="@+id/registerTextView"
+        android:layout_marginBottom="13dp"
         android:clickable="true"
         android:fontFamily="sans-serif"
         android:text="FORGOT USERNAME"
         android:textColor="@color/colorActionBar"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/forgotPWordTextView" />
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/forgotPWordTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/logginButton"
+        android:layout_below="@+id/textView6"
+        android:layout_marginBottom="13dp"
         android:text="FORGOT PASSWORD"
         android:textColor="@color/colorActionBar"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/forgotUnameTextView"
-        app:layout_constraintEnd_toEndOf="@+id/logginButton" />
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintStart_toEndOf="@+id/textView9" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></FrameLayout>
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_alignBaseline="@+id/registerTextView"
+        android:layout_alignBottom="@+id/registerTextView"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_toEndOf="@+id/logginButton"
         android:text="Don't have an account?"
-        app:layout_constraintEnd_toStartOf="@+id/registerTextView"
-        app:layout_constraintTop_toBottomOf="@+id/forgotPWordTextView" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/registerTextView"
+        app:layout_constraintEnd_toStartOf="@+id/switchSavePword"
+        app:layout_constraintStart_toStartOf="@+id/logginButton" />
 
     <TextView
         android:id="@+id/registerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textView6"
+        android:layout_marginBottom="49dp"
+        android:layout_marginEnd="1dp"
+        android:layout_toEndOf="@+id/textView9"
         android:text="REGISTER NOW"
         android:textColor="@color/colorActionBar"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView9"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/forgotPWordTextView" />
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </FrameLayout>
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

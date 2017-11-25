@@ -4,7 +4,7 @@
     <!-- "Mark Favorite", should appear as action button if possible -->
     <item
         android:id="@+id/action_mailbox"
-        android:icon="@mipmap/mailbox"
+        android:icon="@mipmap/ic_launcher_foreground"
         android:title="Mail"
         app:showAsAction="always" />
 
