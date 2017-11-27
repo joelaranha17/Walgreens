@@ -2,6 +2,7 @@ package com.firstapp.joel.walgreens.util.one;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,20 +77,26 @@ public class MyHomeScreenListAdapter extends BaseAdapter {
             public void onClick(View view) {
                 String item = myitems[postion];
                 if(item.equals("Prescriptions & Health")) {
-                    Intent intent1 = new Intent(context, LoginActivity.class);
-                    context.startActivity(intent1);
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.walgreens.com/pharmacy/rxlanding.jsp"));
+                    Intent browserChooserIntent = Intent.createChooser(browserIntent , "Choose browser of your choice");
+                    context.startActivity(browserChooserIntent);
+
+                    /*Intent intent1 = new Intent(context, LoginActivity.class);
+                    context.startActivity(intent1);*/
                 }
                 else if(item.equals("Shop Products")) {
                     Intent intent2 = new Intent(context, ShopItems.class);
                     context.startActivity(intent2);
                 }
                 else if(item.equals("Photo")) {
-                    Intent intent3 = new Intent(context, Fourth.class);
-                    context.startActivity(intent3);
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://photo.walgreens.com/store/welcome"));
+                    Intent browserChooserIntent = Intent.createChooser(browserIntent , "Choose browser of your choice");
+                    context.startActivity(browserChooserIntent);
                 }
                 else {
-                    Intent intent4 = new Intent(context, SubCategoryItems.class);
-                    context.startActivity(intent4);
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.walgreens.com/topic/offers/weeklyad-and-offers.jsp"));
+                    Intent browserChooserIntent = Intent.createChooser(browserIntent , "Choose browser of your choice");
+                    context.startActivity(browserChooserIntent);
                 }
                     Toast.makeText(context, "item clicked " + item, Toast.LENGTH_SHORT).show();
                 }

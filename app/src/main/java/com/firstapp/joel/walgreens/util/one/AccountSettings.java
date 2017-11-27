@@ -54,7 +54,7 @@ public class AccountSettings extends AppCompatActivity {
     private void showAbout() {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.walgreens.com"));
         Intent browserChooserIntent = Intent.createChooser(browserIntent , "Choose browser of your choice");
-        startActivity(browserChooserIntent );
+        startActivity(browserChooserIntent);
     }
 
     private void  loginMethod() {
