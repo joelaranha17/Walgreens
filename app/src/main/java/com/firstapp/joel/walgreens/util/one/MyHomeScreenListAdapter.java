@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import  com.firstapp.joel.walgreens.R;
-import com.firstapp.joel.walgreens.util.five.Fifth;
+import com.firstapp.joel.walgreens.util.sub_category.SubCategoryItems;
 import com.firstapp.joel.walgreens.util.four.Fourth;
 import com.firstapp.joel.walgreens.util.login.LoginActivity;
 import com.firstapp.joel.walgreens.util.Shopping.ShopItems;
@@ -88,7 +88,7 @@ public class MyHomeScreenListAdapter extends BaseAdapter {
                     context.startActivity(intent3);
                 }
                 else {
-                    Intent intent4 = new Intent(context, Fifth.class);
+                    Intent intent4 = new Intent(context, SubCategoryItems.class);
                     context.startActivity(intent4);
                 }
                     Toast.makeText(context, "item clicked " + item, Toast.LENGTH_SHORT).show();
@@ -112,7 +112,7 @@ public class MyHomeScreenListAdapter extends BaseAdapter {
                     context.startActivity(intent3);
                 }
                 else {
-                    Intent intent4 = new Intent(context, Fifth.class);
+                    Intent intent4 = new Intent(context, SubCategoryItems.class);
                     context.startActivity(intent4);
                 }
                 Toast.makeText(context, "item clicked " + item, Toast.LENGTH_SHORT).show();

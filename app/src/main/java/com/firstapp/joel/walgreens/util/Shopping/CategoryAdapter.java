@@ -35,6 +35,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     public interface OnRecyclerViewItemClickListener
     {
         void onItemClick(View view, String data);
+
     }
 
     private OnRecyclerViewItemClickListener mOnItemClickListener = null;
@@ -68,6 +69,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             this.description = itemView.findViewById(R.id.category_discription);
         }
     }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.categories_layout,null);

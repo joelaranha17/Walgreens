@@ -1,4 +1,4 @@
-package com.firstapp.joel.walgreens.util.Shopping;
+package com.firstapp.joel.walgreens.util.sub_category;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -20,7 +20,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.firstapp.joel.walgreens.R;
 import com.firstapp.joel.walgreens.util.login.LoginActivity;
-import com.firstapp.joel.walgreens.util.model.CategoryList;
+import com.firstapp.joel.walgreens.util.model.SubCategoryList;
 import com.firstapp.joel.walgreens.util.one.MainActivity;
 
 import org.json.JSONArray;
@@ -29,16 +29,16 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ShopItems extends AppCompatActivity {
-    private final String TAG = ShopItems.class.getSimpleName();
+public class SubCategoryItems extends AppCompatActivity {
+    private final String TAG = SubCategoryItems.class.getSimpleName();
     private String tmpurl =""; //"http://rjtmobile.com/ansari/shopingcart/androidapp/cust_product.php?Id=";
 
-    private RecyclerView categoryRecyclerView;
-    private CategoryAdapter categoryAdapter;
+    private RecyclerView subCategoryRecyclerView;
+    private SubCategoryAdapter subCategoryAdapter;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ArrayList<CategoryList> categoryListArrayList;
-    private CategoryList categoryList;
+    private ArrayList<SubCategoryList> subCategoryListArrayList;
+    private SubCategoryList subCategoryList;
     ProgressDialog progressDialog;
 
     private int currentId;
@@ -47,37 +47,40 @@ public class ShopItems extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shopitems);
+        setContentView(R.layout.activity_subcategoryitems);
 
         SharedPreferences prefs = this.getSharedPreferences("file5", Context.MODE_PRIVATE);
         String apiKey = prefs.getString("AppApiKey", null);
         String userID = prefs.getString("UserID",null);
         Log.i("ShopItems","Api " +apiKey +" User "+userID);
-        if(apiKey!=null){
+        /*if(apiKey!=null){
         }
         else{
             Intent intentnlogged = new Intent(this, LoginActivity.class);
             this.startActivity(intentnlogged);
         }
+*/
+       /* tmpurl = "http://rjtmobile.com/ansari/shopingcart/androidapp/cust_category.php?" +
+                       "api_key=" + apiKey + "&user_id=" +userID;
+*/
+        tmpurl = "http://rjtmobile.com/ansari/shopingcart/androidapp/cust_sub_category.php?Id=107&" +
+                "api_key=" + apiKey + "&user_id=" + userID;
 
-        tmpurl = "http://rjtmobile.com/ansari/shopingcart/androidapp/cust_category.php?" +
-                "api_key=" + apiKey + "&user_id=" +userID;
+        subCategoryRecyclerView = (RecyclerView) findViewById(R.id.subCategoryRecyclertListView);
+        subCategoryRecyclerView.setHasFixedSize(false);
+        subCategoryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        categoryRecyclerView = (RecyclerView) findViewById(R.id.categoryRecyclertListView);
-        categoryRecyclerView.setHasFixedSize(false);
-        categoryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        categoryListArrayList = new ArrayList<>();
+        subCategoryListArrayList = new ArrayList<>();
 
         /*for (int i=0;i<=10;i++){
             listItem = new ListItem(  "HEADING" + i,"my description");
             mylisteItems.add(listItem);     }
         adapter= new MyAdapter(mylisteItems,this);
         recyclerView.setAdapter(adapter);*/
-        mylarRecyclerView();
+        mysubRecyclerView();
     }
 
-    private void mylarRecyclerView() {
+    private void mysubRecyclerView() {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("loading data");
         progressDialog.show();
@@ -93,19 +96,20 @@ public class ShopItems extends AppCompatActivity {
                 progressDialog.cancel();
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    JSONArray category = jsonObject.getJSONArray("Category");
-                    for (int i = 0; i < category.length(); i++) {
-                        JSONObject item = category.getJSONObject(i);
-                        CategoryList ls = new CategoryList(
+                    JSONArray subCategory = jsonObject.getJSONArray("SubCategory");
+                    for (int i = 0; i < subCategory.length(); i++) {
+                        JSONObject item = subCategory.getJSONObject(i);
+                        SubCategoryList ls = new SubCategoryList(
                                 item.getString("Id"),
-                                item.getString("CatagoryName"),
-                                item.getString("CatagoryDiscription"),
+                                item.getString("SubCatagoryName"),
+                                item.getString("SubCatagoryDiscription"),
                                 item.getString("CatagoryImage"));
-                        categoryListArrayList.add(ls);
-                    }
+                        subCategoryListArrayList.add(ls);
 
-                    adapter = new CategoryAdapter(getApplicationContext(), categoryListArrayList);
-                    categoryRecyclerView.setAdapter(adapter);
+                    }
+                    Log.i("Sub","S" +subCategoryListArrayList);
+                    adapter = new SubCategoryAdapter(subCategoryListArrayList, getApplicationContext());
+                    subCategoryRecyclerView.setAdapter(adapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

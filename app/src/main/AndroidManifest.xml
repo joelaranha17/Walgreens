@@ -32,12 +32,13 @@
         <activity android:name=".util.login.Register" />
         <activity android:name=".util.Shopping.ShopItems" />
         <activity android:name=".util.four.Fourth" />
-        <activity android:name=".util.five.Fifth" />
+        <activity android:name=".util.sub_category.SubCategoryItems" />
         <activity android:name=".util.login.ForgotUsername" />
         <activity android:name=".util.one.AccountSettings" />
         <activity android:name=".util.login.ForgotPassword" />
         <activity android:name=".util.one.Mailbox" />
-        <activity android:name=".util.one.WelcomeActivity"></activity>
+        <activity android:name=".util.one.WelcomeActivity">
+        </activity>
     </application>
 
 </manifest>

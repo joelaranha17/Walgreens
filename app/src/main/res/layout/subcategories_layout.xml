@@ -10,10 +10,8 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="7dp"
-        android:elevation="10000dp"
-        android:fadingEdgeLength="1000dp"
-        app:cardElevation="10000dp">
+        android:layout_marginTop="10dp"
+        android:elevation="10000dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,7 +21,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/category_name"
+                android:id="@+id/subcategory_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -38,7 +36,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/category_image"
+                android:id="@+id/subcategory_image"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:layout_marginBottom="8dp"
@@ -49,15 +47,16 @@
                 app:srcCompat="@mipmap/ic_launcher" />
 
             <TextView
-                android:id="@+id/category_id"
+                android:id="@+id/subcategory_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="116dp"
+                android:text="TextView"
                 app:layout_constraintEnd_toEndOf="@+id/category_discription"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/category_discription"
+                android:id="@+id/subcategory_discription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"

@@ -1,3 +1,4 @@
+/*
 package com.firstapp.joel.walgreens.util.adapters;
 
 import android.content.Context;
@@ -15,9 +16,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+*/
 /**
  * Created by joel on 11/24/2017.
- */
+ *//*
+
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolder> implements View.OnClickListener {
     private final ArrayList<ProductsList> productsArrayList;
     private final Context context;
@@ -91,3 +94,4 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
 
     }
 }
+*/
