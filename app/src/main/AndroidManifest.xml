@@ -11,7 +11,8 @@
         android:label="Walgreens"
         android:roundIcon="@mipmap/walgreens"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:screenOrientation="portrait"
+    android:theme="@style/AppTheme">
         <activity android:name=".util.one.SplashScreen">
             android:screenOrientation="portrait">
             <intent-filter>
@@ -37,8 +38,8 @@
         <activity android:name=".util.one.AccountSettings" />
         <activity android:name=".util.login.ForgotPassword" />
         <activity android:name=".util.one.Mailbox" />
-        <activity android:name=".util.one.WelcomeActivity">
-        </activity>
+        <activity android:name=".util.one.WelcomeActivity"></activity>
+        <activity android:name=".util.products.ProductItems"></activity>
     </application>
 
 </manifest>

@@ -70,7 +70,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.products_list_item,null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_products,null);
         view.setOnClickListener(this);
         return new ViewHolder(view);
     }

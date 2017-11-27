@@ -23,7 +23,13 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
+        SharedPreferences prefs = this.getSharedPreferences("file5", Context.MODE_PRIVATE);
+        String apiKey = prefs.getString("AppApiKey", null);
+        String userID = prefs.getString("UserID",null);
+        String phone = prefs.getString("input_phone",null);
         welcome = (TextView)findViewById(R.id.welcomeUsername);
+        welcome.append(apiKey);
         btn1 = (Button)findViewById(R.id.buttonHome);
 
         btn1.setOnClickListener(new View.OnClickListener() {

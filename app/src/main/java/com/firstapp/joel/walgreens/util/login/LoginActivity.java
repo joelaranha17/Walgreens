@@ -98,13 +98,13 @@ public class LoginActivity extends AppCompatActivity {
                             {
                                 SharedPreferences.Editor editPef = spref.edit();
                                 editPef.putString("input_phone", input_username);
-                                editPef.apply();
+                                editPef.commit();
 
                             }
                             if(rempass.isChecked()){
                                 SharedPreferences.Editor editPef = spref.edit();
                                 editPef.putString("input_phone", input_password);
-                                editPef.apply();
+                                editPef.commit();
                             }
                             url = "http://rjtmobile.com/ansari/shopingcart/androidapp/shop_login.php?" +
                                     "mobile=" + input_username + "&password=" + input_password;

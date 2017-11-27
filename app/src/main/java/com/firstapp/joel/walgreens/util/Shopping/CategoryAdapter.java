@@ -1,16 +1,19 @@
 package com.firstapp.joel.walgreens.util.Shopping;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.firstapp.joel.walgreens.R;
 import com.firstapp.joel.walgreens.util.model.CategoryList;
+import com.firstapp.joel.walgreens.util.sub_category.SubCategoryItems;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -24,6 +27,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     private final ArrayList<CategoryList> categoryList;
     private final Context context;
     private final LayoutInflater layoutInflater;
+    Long Position;
+
 
     public CategoryAdapter(Context context, ArrayList<CategoryList> categoryList){
         layoutInflater = LayoutInflater.from(context);
@@ -60,6 +65,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         final TextView name;
         final TextView description;
         final ImageView image;
+        LinearLayout linearLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -67,6 +73,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             this.name = itemView.findViewById(R.id.category_name);
             this.image = itemView.findViewById(R.id.category_image);
             this.description = itemView.findViewById(R.id.category_discription);
+            linearLayout = (LinearLayout)itemView.findViewById(R.id.llinearLayout);
         }
     }
 
@@ -78,7 +85,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder._ID.setText(categoryList.get(position).ID);
         holder.name.setText(categoryList.get(position).CategoryName);
         holder.description.setText(categoryList.get(position).CategoryDiscription);
@@ -87,8 +94,20 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                 .load(categoryList.get(position).CatagoryImage)
                 .into(holder.image);
 
-    }
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String A =categoryList.get(position).CategoryName;
+                ;
+                Log.d("YOYO","WORK:"+A);
+                if(A.contains("Electronics")){
+                    Intent gotosub = new Intent(context, SubCategoryItems.class);
+                    context.startActivity(gotosub);
+                }
 
+            }
+        });
+    }
     @Override
     public int getItemCount() {
         return categoryList.size();

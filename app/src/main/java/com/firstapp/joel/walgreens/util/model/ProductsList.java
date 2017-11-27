@@ -5,19 +5,19 @@ package com.firstapp.joel.walgreens.util.model;
  */
 
 public class ProductsList {
-    public final String ID;
+    public final String Id;
     public final String ProductName;
     public final String Quantity;
-    public final String Price;
-    public final String Description;
+    public final String Prize;
+    public final String Discription;
     public final String Image;
 
-    public ProductsList(String ID, String ProductName, String Quantity, String Price, String Description,String Image){
-        this.ID = ID;
+    public ProductsList(String Id, String ProductName, String Quantity, String Prize, String Discription,String Image){
+        this.Id = Id;
         this.ProductName = ProductName;
         this.Quantity =  Quantity;
-        this.Price = Price;
-        this.Description = "Description: " + Description;
+        this.Prize = Prize;
+        this.Discription = Discription;
         this.Image = Image;
     }
 }
