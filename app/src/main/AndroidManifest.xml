@@ -37,6 +37,7 @@
         <activity android:name=".util.one.AccountSettings" />
         <activity android:name=".util.login.ForgotPassword" />
         <activity android:name=".util.one.Mailbox" />
+        <activity android:name=".util.one.WelcomeActivity"></activity>
     </application>
 
 </manifest>

@@ -112,7 +112,7 @@ public class Register extends AppCompatActivity {
 
                 if(response.contains("successfully registered")){
 
-                    Toast.makeText(Register.this,response+"You can Login Now",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Register.this,response+"You can LoginDetails Now",Toast.LENGTH_LONG).show();
                     Intent back_to_login = new Intent(Register.this,LoginActivity.class);
                     startActivity(back_to_login);
 

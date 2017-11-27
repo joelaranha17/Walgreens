@@ -1,11 +1,16 @@
 package com.firstapp.joel.walgreens.util.Shopping;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -14,8 +19,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.firstapp.joel.walgreens.R;
-import com.firstapp.joel.walgreens.util.adapters.ProductsAdapter;
-import com.firstapp.joel.walgreens.util.model.ProductsList;
+import com.firstapp.joel.walgreens.util.login.LoginActivity;
+import com.firstapp.joel.walgreens.util.model.CategoryList;
+import com.firstapp.joel.walgreens.util.one.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,15 +31,14 @@ import java.util.ArrayList;
 
 public class ShopItems extends AppCompatActivity {
     private final String TAG = ShopItems.class.getSimpleName();
-    private static final String tmpurl = "http://rjtmobile.com/ansari/shopingcart/androidapp/cust_product.php?Id=";
-    private String url;
+    private String tmpurl =""; //"http://rjtmobile.com/ansari/shopingcart/androidapp/cust_product.php?Id=";
 
-    private RecyclerView productsRecyclerView;
-    private ProductsAdapter productsAdapter;
+    private RecyclerView categoryRecyclerView;
+    private CategoryAdapter categoryAdapter;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ArrayList<ProductsList> productsArrayList;
-    private ProductsList products;
+    private ArrayList<CategoryList> categoryListArrayList;
+    private CategoryList categoryList;
     ProgressDialog progressDialog;
 
     private int currentId;
@@ -44,19 +49,34 @@ public class ShopItems extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopitems);
 
-        productsRecyclerView = (RecyclerView) findViewById(R.id.productRecyclertListView);
-        productsRecyclerView.setHasFixedSize(true);
-        productsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        SharedPreferences prefs = this.getSharedPreferences("file5", Context.MODE_PRIVATE);
+        String apiKey = prefs.getString("AppApiKey", null);
+        String userID = prefs.getString("UserID",null);
+        Log.i("ShopItems","Api " +apiKey +" User "+userID);
+        if(apiKey!=null){
+        }
+        else{
+            Intent intentnlogged = new Intent(this, LoginActivity.class);
+            this.startActivity(intentnlogged);
+        }
 
-        productsArrayList = new ArrayList<>();
+        tmpurl = "http://rjtmobile.com/ansari/shopingcart/androidapp/cust_category.php?" +
+                "api_key=" + apiKey + "&user_id=" +userID;
+
+        categoryRecyclerView = (RecyclerView) findViewById(R.id.categoryRecyclertListView);
+        categoryRecyclerView.setHasFixedSize(false);
+        categoryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        categoryListArrayList = new ArrayList<>();
 
         /*for (int i=0;i<=10;i++){
             listItem = new ListItem(  "HEADING" + i,"my description");
             mylisteItems.add(listItem);     }
         adapter= new MyAdapter(mylisteItems,this);
         recyclerView.setAdapter(adapter);*/
-            mylarRecyclerView();
-        }
+        mylarRecyclerView();
+    }
+
     private void mylarRecyclerView() {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("loading data");
@@ -64,9 +84,7 @@ public class ShopItems extends AppCompatActivity {
 
         Log.i("MYTEST", "yes");
 
-        StringRequest sr = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-
-
+        StringRequest sr = new StringRequest(Request.Method.POST, tmpurl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -75,20 +93,19 @@ public class ShopItems extends AppCompatActivity {
                 progressDialog.cancel();
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    JSONArray categories = jsonObject.getJSONArray("actors");
-                    for (int i = 0; i < categories.length(); i++) {
-                        JSONObject item = categories.getJSONObject(i);
-                        ProductsList ls = new ProductsList(item.getString("ID"),
-                                item.getString("ProductName"),
-                                item.getString("Quantity"),
-                                item.getString("Price"),
-                                item.getString("Description"),
-                                item.getString("Image"));
-                        productsArrayList.add(ls);
+                    JSONArray category = jsonObject.getJSONArray("Category");
+                    for (int i = 0; i < category.length(); i++) {
+                        JSONObject item = category.getJSONObject(i);
+                        CategoryList ls = new CategoryList(
+                                item.getString("Id"),
+                                item.getString("CatagoryName"),
+                                item.getString("CatagoryDiscription"),
+                                item.getString("CatagoryImage"));
+                        categoryListArrayList.add(ls);
                     }
 
-                    adapter = new ProductsAdapter(productsArrayList, getApplicationContext());
-                    productsRecyclerView.setAdapter(adapter);
+                    adapter = new CategoryAdapter(getApplicationContext(), categoryListArrayList);
+                    categoryRecyclerView.setAdapter(adapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -102,5 +119,41 @@ public class ShopItems extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(sr);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.shopitems, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.logout:
+                LogoutUser();
+                return true;
+            case R.id.home:
+                Intent intenthome = new Intent(this, MainActivity.class);
+                this.startActivity(intenthome);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void LogoutUser() {
+        SharedPreferences sharedpreferences = getSharedPreferences("file5", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.clear();
+        editor.commit();
+        Intent intent1 = new Intent(this, LoginActivity.class);
+        this.startActivity(intent1);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent backbuttonpressed = new Intent(this, MainActivity.class);
+        startActivity(backbuttonpressed);
     }
 }
