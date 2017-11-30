@@ -49,15 +49,16 @@ public class ShopItems extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopitems);
 
-        SharedPreferences prefs = this.getSharedPreferences("file5", Context.MODE_PRIVATE);
-        String apiKey = prefs.getString("AppApiKey", null);
-        String userID = prefs.getString("UserID",null);
+        SharedPreferences spref = this.getSharedPreferences("file5", Context.MODE_PRIVATE);
+        String apiKey = spref.getString("AppApiKey", null);
+        String userID = spref.getString("UserID",null);
         Log.i("ShopItems","Api " +apiKey +" User "+userID);
         if(apiKey!=null){
         }
         else{
-            Intent intentnlogged = new Intent(this, LoginActivity.class);
-            this.startActivity(intentnlogged);
+            Intent gotologinpage = new Intent(this, LoginActivity.class);
+            this.startActivity(gotologinpage);
+            finish();
         }
 
         tmpurl = "http://rjtmobile.com/ansari/shopingcart/androidapp/cust_category.php?" +
@@ -138,17 +139,21 @@ public class ShopItems extends AppCompatActivity {
             case R.id.home:
                 Intent intenthome = new Intent(this, MainActivity.class);
                 this.startActivity(intenthome);
+               // finish();
+
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void LogoutUser() {
-        SharedPreferences sharedpreferences = getSharedPreferences("file5", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedpreferences.edit();
+        SharedPreferences spref = getSharedPreferences("file5", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = spref.edit();
         editor.clear();
         editor.commit();
-        Intent intent1 = new Intent(this, LoginActivity.class);
-        this.startActivity(intent1);
+        Intent item = new Intent(this, MainActivity.class);
+        //backbuttonpressed.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Will clear out your activity history stack till now
+        this.startActivity(item);
+        finish();
     }
 
     @Override
@@ -156,5 +161,6 @@ public class ShopItems extends AppCompatActivity {
         super.onBackPressed();
         Intent backbuttonpressed = new Intent(this, MainActivity.class);
         startActivity(backbuttonpressed);
+        finish();
     }
 }

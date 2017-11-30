@@ -20,4 +20,28 @@ public class ProductsList {
         this.Discription = Discription;
         this.Image = Image;
     }
+
+    public String getId() {
+        return Id;
+    }
+
+    public String getProductName() {
+        return ProductName;
+    }
+
+    public String getQuantity() {
+        return Quantity;
+    }
+
+    public String getPrize() {
+        return Prize;
+    }
+
+    public String getDiscription() {
+        return Discription;
+    }
+
+    public String getImage() {
+        return Image;
+    }
 }

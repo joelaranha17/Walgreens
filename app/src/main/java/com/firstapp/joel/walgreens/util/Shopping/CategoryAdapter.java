@@ -2,6 +2,7 @@ package com.firstapp.joel.walgreens.util.Shopping;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -97,14 +98,18 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String A =categoryList.get(position).CategoryName;
-                ;
-                Log.d("YOYO","WORK:"+A);
-                if(A.contains("Electronics")){
-                    Intent gotosub = new Intent(context, SubCategoryItems.class);
-                    context.startActivity(gotosub);
-                }
+                String A = categoryList.get(position).CategoryName;
+                String IDsC = categoryList.get(position).ID;
+/*//                intent.putExtra("myKey", AnyValue);
+  //              startActivity(intent);
+                Log.d("YOYO","WORK:"+Cart);
+                if(Cart.contains("Electronics")){*/
+                Bundle b = new Bundle();
 
+                b.putString("CategoryID", IDsC);
+                Intent gotosub = new Intent(context, SubCategoryItems.class);
+                gotosub.putExtras(b);
+                context.startActivity(gotosub);
             }
         });
     }

@@ -10,9 +10,9 @@
         android:icon="@mipmap/walgreens"
         android:label="Walgreens"
         android:roundIcon="@mipmap/walgreens"
-        android:supportsRtl="true"
         android:screenOrientation="portrait"
-    android:theme="@style/AppTheme">
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
         <activity android:name=".util.one.SplashScreen">
             android:screenOrientation="portrait">
             <intent-filter>
@@ -21,7 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".util.one.MainActivity">
+        <activity
+            android:name=".util.one.MainActivity"
+            android:launchMode="singleTask">
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,14 +34,15 @@
         <activity android:name=".util.login.LoginActivity" />
         <activity android:name=".util.login.Register" />
         <activity android:name=".util.Shopping.ShopItems" />
-        <activity android:name=".util.four.Fourth" />
         <activity android:name=".util.sub_category.SubCategoryItems" />
-        <activity android:name=".util.login.ForgotUsername" />
+        <activity android:name=".util.products.ProductItems" />
         <activity android:name=".util.one.AccountSettings" />
         <activity android:name=".util.login.ForgotPassword" />
         <activity android:name=".util.one.Mailbox" />
-        <activity android:name=".util.one.WelcomeActivity"></activity>
-        <activity android:name=".util.products.ProductItems"></activity>
+        <activity android:name=".util.one.WelcomeActivity" />
+        <activity android:name=".util.login.ResetPassword" />
+        <activity android:name=".util.products.Product" />
+        <activity android:name=".util.checkout.MyCart"></activity>
     </application>
 
 </manifest>

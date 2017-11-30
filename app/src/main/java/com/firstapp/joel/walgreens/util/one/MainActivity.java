@@ -28,20 +28,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listview = (ListView) this.findViewById(R.id.myList);
         SharedPreferences prefs = this.getSharedPreferences("file5", Context.MODE_PRIVATE);
+        SharedPreferences prefs1 = this.getSharedPreferences("file1", Context.MODE_PRIVATE);
+
         apiKey = prefs.getString("AppApiKey", null);
         String userID = prefs.getString("UserID",null);
-/*
-        Log.i("ShopItems","Api " +apiKey +" User "+userID);
-*/
-
-
-        /*mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-*/
-
-       /* ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                (MainActivity.this,R.layout.item_layout,R.id.textViewItem,countries);*/
 
         MyHomeScreenListAdapter myAdapter = new MyHomeScreenListAdapter(items, imageIds, this);
         listview.setAdapter(myAdapter);                                                //setting up listener
@@ -72,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.action_mailbox:
                     if(apiKey!=null){
-                        Intent alreadylogged1 = new Intent(MainActivity.this, WelcomeActivity.class);
-                        startActivity(alreadylogged1);
+                        Intent alreadylogged = new Intent(MainActivity.this, WelcomeActivity.class);
+                        startActivity(alreadylogged);
                     }
                     else{
                         Intent mailbox = new Intent(MainActivity.this, Mailbox.class);
@@ -89,5 +79,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
-
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
     }

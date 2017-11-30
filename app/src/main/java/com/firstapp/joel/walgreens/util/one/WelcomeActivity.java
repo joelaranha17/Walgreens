@@ -10,9 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firstapp.joel.walgreens.R;
-import com.firstapp.joel.walgreens.util.login.LoginActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -29,14 +29,16 @@ public class WelcomeActivity extends AppCompatActivity {
         String userID = prefs.getString("UserID",null);
         String phone = prefs.getString("input_phone",null);
         welcome = (TextView)findViewById(R.id.welcomeUsername);
-        welcome.append(apiKey);
+//        welcome.append(apiKey);
         btn1 = (Button)findViewById(R.id.buttonHome);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent backbuttonpressed = new Intent(WelcomeActivity.this, MainActivity.class);
+                backbuttonpressed.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Will clear out your activity history stack till now
                 startActivity(backbuttonpressed);
+                finish();
             }
         });
     }
@@ -54,17 +56,18 @@ public class WelcomeActivity extends AppCompatActivity {
                 LogoutUser();
                 return true;
             case R.id.home:
-                Intent intenthome = new Intent(this, MainActivity.class);
-                this.startActivity(intenthome);
+                Intent backbuttonpressed = new Intent(this, MainActivity.class);
+                this.startActivity(backbuttonpressed);
         }
         return super.onOptionsItemSelected(item);
     }
     private void LogoutUser() {
-        SharedPreferences sharedpreferences = getSharedPreferences("file5", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedpreferences.edit();
+        SharedPreferences spref = getSharedPreferences("file5", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = spref.edit();
         editor.clear();
         editor.commit();
-        Intent intent1 = new Intent(this, LoginActivity.class);
-        this.startActivity(intent1);
+        Toast.makeText(WelcomeActivity.this,"Logged Out Successfully",Toast.LENGTH_SHORT).show();
+        Intent backbuttonpressed = new Intent(this, MainActivity.class);
+        this.startActivity(backbuttonpressed);
     }
 }

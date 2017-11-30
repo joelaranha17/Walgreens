@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorActionBar">
+    android:background="@color/colorActionBar"
+    tools:context="com.firstapp.joel.walgreens.util.checkout.MyCart">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/myRView"
+        android:id="@+id/mycartRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:background="@android:color/background_light"
+        android:padding="10dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp" />
 </android.support.constraint.ConstraintLayout>

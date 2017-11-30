@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/imageViewItem"
         android:layout_width="93dp"
-        android:layout_height="75dp"
+        android:layout_height="85dp"
         android:background="@android:color/white"
         android:padding="20dp"
         android:paddingBottom="20dp"
@@ -22,9 +22,11 @@
     <TextView
         android:id="@+id/textViewItem"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="85dp"
         android:background="@android:color/white"
         android:gravity="center"
+        android:paddingLeft="5dp"
         android:text="TextView"
+        android:textAlignment="textStart"
         android:textColor="@android:color/black" />
 </LinearLayout>

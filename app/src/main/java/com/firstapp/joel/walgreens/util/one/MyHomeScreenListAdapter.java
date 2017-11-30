@@ -10,10 +10,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import  com.firstapp.joel.walgreens.R;
-import com.firstapp.joel.walgreens.util.sub_category.SubCategoryItems;
-import com.firstapp.joel.walgreens.util.four.Fourth;
-import com.firstapp.joel.walgreens.util.login.LoginActivity;
+
+import com.firstapp.joel.walgreens.R;
 import com.firstapp.joel.walgreens.util.Shopping.ShopItems;
 
 /**
@@ -77,28 +75,20 @@ public class MyHomeScreenListAdapter extends BaseAdapter {
             public void onClick(View view) {
                 String item = myitems[postion];
                 if(item.equals("Prescriptions & Health")) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.walgreens.com/pharmacy/rxlanding.jsp"));
-                    Intent browserChooserIntent = Intent.createChooser(browserIntent , "Choose browser of your choice");
-                    context.startActivity(browserChooserIntent);
-
+                    prescriptionsHealth();
                     /*Intent intent1 = new Intent(context, LoginActivity.class);
                     context.startActivity(intent1);*/
                 }
                 else if(item.equals("Shop Products")) {
-                    Intent intent2 = new Intent(context, ShopItems.class);
-                    context.startActivity(intent2);
+                    shop();
                 }
                 else if(item.equals("Photo")) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://photo.walgreens.com/store/welcome"));
-                    Intent browserChooserIntent = Intent.createChooser(browserIntent , "Choose browser of your choice");
-                    context.startActivity(browserChooserIntent);
+                    photo();
                 }
                 else {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.walgreens.com/topic/offers/weeklyad-and-offers.jsp"));
-                    Intent browserChooserIntent = Intent.createChooser(browserIntent , "Choose browser of your choice");
-                    context.startActivity(browserChooserIntent);
+                    ads();
                 }
-                    Toast.makeText(context, "item clicked " + item, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "" + item, Toast.LENGTH_SHORT).show();
                 }
         });
 
@@ -107,26 +97,42 @@ public class MyHomeScreenListAdapter extends BaseAdapter {
             public void onClick(View v) {
                 String item = myitems[postion];
                 if(item.equals("Prescriptions & Health")) {
-                    Intent intent1 = new Intent(context, LoginActivity.class);
-                    context.startActivity(intent1);
+                    prescriptionsHealth();
                 }
                 else if(item.equals("Shop Products")) {
-                    Intent intent2 = new Intent(context, ShopItems.class);
-                    context.startActivity(intent2);
+                    shop();
                 }
                 else if(item.equals("Photo")) {
-                    Intent intent3 = new Intent(context, Fourth.class);
-                    context.startActivity(intent3);
+                    photo();
                 }
                 else {
-                    Intent intent4 = new Intent(context, SubCategoryItems.class);
-                    context.startActivity(intent4);
+                    ads();
                 }
-                Toast.makeText(context, "item clicked " + item, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "" + item, Toast.LENGTH_SHORT).show();
 
 
             }
         });
         return view;
+    }
+
+    public void prescriptionsHealth(){
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.walgreens.com/pharmacy/rxlanding.jsp"));
+        Intent browserChooserIntent = Intent.createChooser(browserIntent , "Choose browser of your choice");
+        context.startActivity(browserChooserIntent);
+    }
+    public void photo(){
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.walgreens.com/store/welcome"));
+        Intent browserChooserIntent = Intent.createChooser(browserIntent , "Choose browser of your choice");
+        context.startActivity(browserChooserIntent);
+    }
+    public void ads(){
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.walgreens.com/topic/offers/weeklyad-and-offers.jsp"));
+        Intent browserChooserIntent = Intent.createChooser(browserIntent , "Choose browser of your choice");
+        context.startActivity(browserChooserIntent);
+    }
+    public void shop() {
+        Intent intent2 = new Intent(context, ShopItems.class);
+        context.startActivity(intent2);
     }
 }

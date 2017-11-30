@@ -1,9 +1,12 @@
 package com.firstapp.joel.walgreens.util.one;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -30,6 +33,16 @@ public class AccountSettings extends AppCompatActivity {
         register = (Button)findViewById(R.id.buttonRegister);
         about = (TextView)findViewById(R.id.tvAbout);
 
+        SharedPreferences spref = this.getSharedPreferences("file5", Context.MODE_PRIVATE);
+// then you use
+        String apiKey = spref.getString("AppApiKey", null);
+        String userID = spref.getString("UserID", null);
+        Log.i("ShopItems", "Api " + apiKey + " User " + userID);
+
+        if (apiKey != null && userID != null) {
+            Intent alreadyloggedin = new Intent(this, WelcomeActivity.class);
+            startActivity(alreadyloggedin);
+        }
         login.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -49,6 +62,7 @@ public class AccountSettings extends AppCompatActivity {
                 showAbout();
             }
         });
+
     }
 
     private void showAbout() {
@@ -60,11 +74,20 @@ public class AccountSettings extends AppCompatActivity {
     private void  loginMethod() {
         Intent gotologinpage = new Intent(this, LoginActivity.class);
         startActivity(gotologinpage);
+        finish();
     }
 
     private void registerMethod() {
         Intent gotoregisterpage = new Intent(this, Register.class);
         startActivity(gotoregisterpage);
-
+        finish();
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent backbuttonpressed = new Intent(this, MainActivity.class);
+        backbuttonpressed.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Will clear out your activity history stack till now
+        startActivity(backbuttonpressed);
+    }
+
 }

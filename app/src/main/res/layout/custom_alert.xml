@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <Button
+        android:id="@+id/checkoutCD"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textView2CD"
+        android:layout_marginEnd="22dp"
+        android:layout_marginTop="16dp"
+        android:text="Checkout" />
+
+    <Button
+        android:id="@+id/removeCD"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/checkoutCD"
+        android:layout_alignBottom="@+id/checkoutCD"
+        android:layout_alignStart="@+id/textView2CD"
+        android:text="Remove" />
+
+    <TextView
+        android:id="@+id/textView1CD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text"
+        android:layout_marginStart="20dp"
+        android:text="My Cart"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView2CD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView1CD"
+        android:layout_below="@+id/textView1CD"
+        android:layout_marginTop="18dp"
+        android:text="How Would you like to continue?" />
+
+    <Button
+        android:id="@+id/backCD"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/checkoutCD"
+        android:layout_below="@+id/checkoutCD"
+        android:text="Get Back to Shopping" />
+
+</RelativeLayout>

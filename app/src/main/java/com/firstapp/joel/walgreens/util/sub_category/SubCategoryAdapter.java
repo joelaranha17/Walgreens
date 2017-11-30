@@ -2,8 +2,8 @@ package com.firstapp.joel.walgreens.util.sub_category;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,16 +91,20 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
             @Override
             public void onClick(View view) {
                 String A = subCategoryList.get(position).SubCatagoryName;
-              Log.d("YOYO","WORK:"+A);
-              if(A.contains("Laptop")){
-                  Intent gotoproduct = new Intent(context, ProductItems.class);
-                  context.startActivity(gotoproduct);
-              }
+                String IDsC = subCategoryList.get(position).Id;
+/*//                intent.putExtra("myKey", AnyValue);
+  //              startActivity(intent);
+                Log.d("YOYO","WORK:"+Cart);
+                if(Cart.contains("Electronics")){*/
+                Bundle b = new Bundle();
 
+                b.putString("SubCategoryID", IDsC);
+                Intent gotoproduct = new Intent(context, ProductItems.class);
+                gotoproduct.putExtras(b);
+                context.startActivity(gotoproduct);
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return subCategoryList.size();

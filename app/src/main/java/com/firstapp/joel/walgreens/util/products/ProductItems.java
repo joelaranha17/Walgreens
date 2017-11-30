@@ -19,10 +19,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.firstapp.joel.walgreens.R;
-import com.firstapp.joel.walgreens.util.login.LoginActivity;
 import com.firstapp.joel.walgreens.util.model.ProductsList;
 import com.firstapp.joel.walgreens.util.one.MainActivity;
-import com.firstapp.joel.walgreens.util.sub_category.SubCategoryItems;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,7 +33,7 @@ public class ProductItems extends AppCompatActivity {
     private String tmpurl = ""; //"http://rjtmobile.com/ansari/shopingcart/androidapp/cust_product.php?Id=";
 
     private RecyclerView productRecyclerView;
-    private ProductAdapter productAdapter;
+    private ProductItemsAdapter productAdapter;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<ProductsList> productsListsArrayList;
@@ -50,16 +48,21 @@ public class ProductItems extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
 
-        SharedPreferences prefs = this.getSharedPreferences("file5", Context.MODE_PRIVATE);
-        String apiKey = prefs.getString("AppApiKey", null);
-        String userID = prefs.getString("UserID", null);
+        SharedPreferences spref = this.getSharedPreferences("file5", Context.MODE_PRIVATE);
+        String apiKey = spref.getString("AppApiKey", null);
+        String userID = spref.getString("UserID", null);
         Log.i("ShopItems", "Api " + apiKey + " User " + userID);
 
-       tmpurl = "http://rjtmobile.com/ansari/shopingcart/androidapp/cust_product.php?Id=205&" +
-               "api_key=" + apiKey + "&user_id=" + userID;
+        Intent gotoproduct = getIntent();//gotosub.getExtras();
+        Bundle b = gotoproduct.getExtras();
+        String s = b.getString("SubCategoryID");
+        Log.i("SUBCATEGORY ID","JOEL"+s);
+
+       tmpurl = "http://rjtmobile.com/ansari/shopingcart/androidapp/cust_product.php?Id=" + s +
+               "&api_key=" + apiKey + "&user_id=" + userID;
 
         productRecyclerView = (RecyclerView) findViewById(R.id.myRView);
-        productRecyclerView.setHasFixedSize(false);
+        productRecyclerView.setHasFixedSize(true);
         productRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         productsListsArrayList = new ArrayList<>();
@@ -72,24 +75,29 @@ public class ProductItems extends AppCompatActivity {
         mylRecyclerView();
     }
 
-    private void mylRecyclerView() {
+    private void mylRecyclerView()
+    {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("loading data");
         progressDialog.show();
 
       //  Log.i("MYTEST", "yes");
 
-        StringRequest sr = new StringRequest(Request.Method.POST, tmpurl, new Response.Listener<String>() {
+        StringRequest sr = new StringRequest(Request.Method.POST, tmpurl, new Response.Listener<String>()
+        {
             @Override
-            public void onResponse(String response) {
+            public void onResponse(String response)
+            {
 
                 Log.i("products", response);
 
                 progressDialog.cancel();
-                try {
+                try
+                {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray product = jsonObject.getJSONArray("Product");
-                    for (int i = 0; i < product.length(); i++) {
+                    for (int i = 0; i < product.length(); i++)
+                    {
                         JSONObject item = product.getJSONObject(i);
                         ProductsList ls = new ProductsList(
                                 item.getString("Id"),
@@ -102,7 +110,7 @@ public class ProductItems extends AppCompatActivity {
 
                     }
                     Log.i("PRODUCTS", "S" + productsListsArrayList);
-                    adapter = new ProductAdapter(productsListsArrayList, getApplicationContext());
+                    adapter = new ProductItemsAdapter(productsListsArrayList, getApplicationContext());
                     productRecyclerView.setAdapter(adapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -136,23 +144,26 @@ public class ProductItems extends AppCompatActivity {
             case R.id.home:
                 Intent intenthome = new Intent(this, MainActivity.class);
                 this.startActivity(intenthome);
+                finish();
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void LogoutUser() {
-        SharedPreferences sharedpreferences = getSharedPreferences("file5", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedpreferences.edit();
+        SharedPreferences spref = getSharedPreferences("file5", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = spref.edit();
         editor.clear();
         editor.commit();
-        Intent intent1 = new Intent(this, LoginActivity.class);
-        this.startActivity(intent1);
+        Intent items1 = new Intent(this, MainActivity.class);
+        //backbuttonpressed.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Will clear out your activity history stack till now
+        this.startActivity(items1);
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent backbuttonpressedonce = new Intent(this, SubCategoryItems.class);
-        startActivity(backbuttonpressedonce);
+       /* Intent backbuttonpressed = new Intent(this, SubCategoryItems.class);
+        startActivity(backbuttonpressed);
+        finish();*/
     }
 }

@@ -112,15 +112,14 @@ public class Register extends AppCompatActivity {
 
                 if(response.contains("successfully registered")){
 
-                    Toast.makeText(Register.this,response+"You can LoginDetails Now",Toast.LENGTH_LONG).show();
-                    Intent back_to_login = new Intent(Register.this,LoginActivity.class);
-                    startActivity(back_to_login);
-
+                    Toast.makeText(Register.this,response+"You can Login Now",Toast.LENGTH_LONG).show();
+                    Intent backbuttonpressed = new Intent(Register.this,LoginActivity.class);
+                    startActivity(backbuttonpressed);
+                    finish();
                 }
                 else{
                     Toast.makeText(Register.this,response,Toast.LENGTH_LONG).show();
                 }
-
             }
         },new Response.ErrorListener() {
             @Override
@@ -130,6 +129,5 @@ public class Register extends AppCompatActivity {
         });
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(stringRequest, tag_string_req);
-
     }
 }

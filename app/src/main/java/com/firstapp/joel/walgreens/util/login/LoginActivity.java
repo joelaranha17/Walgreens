@@ -15,9 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firstapp.joel.walgreens.R;
-import com.firstapp.joel.walgreens.util.Shopping.ShopItems;
 import com.firstapp.joel.walgreens.util.model.LoginDetails;
 import com.firstapp.joel.walgreens.util.one.MainActivity;
+import com.firstapp.joel.walgreens.util.one.WelcomeActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,12 +40,17 @@ public class LoginActivity extends AppCompatActivity {
     Button loginbtn;
     Switch remuser;
     Switch rempass;
-    TextView forgot_user, forgot_pass, register;
+    TextView forgot_user, forgot_pass, register, passreset;
     private SharedPreferences spref;
+    private SharedPreferences spref1;
     private ArrayList<LoginDetails> loginDetailsArrayList;
     private LoginDetails login;
     private String url="";
     private String mydata;
+    String input_username;
+    String input_password;
+    String input_user;
+    String input_pass;
 
 
     @Override
@@ -53,16 +58,18 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        SharedPreferences prefs = this.getSharedPreferences("file5", Context.MODE_PRIVATE);
+//-----------------------------------for the appkey and userid------------------------------------------------------
+        SharedPreferences spref = this.getSharedPreferences("file5", Context.MODE_PRIVATE);
 // then you use
-        String apiKey = prefs.getString("AppApiKey", null);
-        String userID = prefs.getString("UserID",null);
+        String apiKey = spref.getString("AppApiKey", null);
+        String userID = spref.getString("UserID",null);
         Log.i("ShopItems","Api " +apiKey +" User "+userID);
 
         if(apiKey!=null && userID != null){
-            Intent category_intent = new Intent(LoginActivity.this, ShopItems.class);
-            startActivity(category_intent);
+            Intent alreadyloggedin = new Intent(LoginActivity.this, WelcomeActivity.class);
+            startActivity(alreadyloggedin);
         }
+        else{
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
         /*
          * initializing ids for all view elements
@@ -76,9 +83,22 @@ public class LoginActivity extends AppCompatActivity {
         forgot_user = (TextView) findViewById(R.id.forgotUnameTextView);
         forgot_pass = (TextView) findViewById(R.id.forgotPWordTextView);
         forgot_pass = (TextView) findViewById(R.id.forgotPWordTextView);
+        passreset = (TextView) findViewById(R.id.resetPass);
         register = (TextView) findViewById(R.id.registerTextView);
-        spref = getSharedPreferences("file5", Context.MODE_PRIVATE);
 
+//----------------------------------for the user info----------------------------------------------------------------
+            SharedPreferences spref1 = this.getSharedPreferences("file1", Context.MODE_PRIVATE);
+// then you use
+            String username = spref1.getString("Username", null);
+            String password = spref1.getString("Password",null);
+
+        if(username!=null && password != null){
+
+            input_user=spref1.getString("Username",null);
+            input_pass=spref1.getString("Password",null);
+            uname.setText(input_user);
+            pword.setText(input_pass);
+        }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------
         /*
          * Setting up listeners for the activity
@@ -86,9 +106,8 @@ public class LoginActivity extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String input_username = uname.getText().toString();
-                String input_password = pword.getText().toString();
+                input_username = uname.getText().toString();
+                input_password = pword.getText().toString();
                 if (input_username.equals("") || input_password.equals("")) {
                     Toast.makeText(LoginActivity.this, "Please Enter the Empty Field", Toast.LENGTH_SHORT).show();
                 } else if (!input_username.isEmpty() && !input_password.isEmpty()) {
@@ -96,20 +115,23 @@ public class LoginActivity extends AppCompatActivity {
                         if (input_password.length() >= 3) {
                             if(remuser.isChecked())
                             {
-                                SharedPreferences.Editor editPef = spref.edit();
+                                SharedPreferences spref1=getSharedPreferences("file1",Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor1 = spref1.edit();
+                                editor1.putString("Username",input_username );
+                                editor1.commit();
+                                /*SharedPreferences.Editor editPef = spref1.edit();
                                 editPef.putString("input_phone", input_username);
-                                editPef.commit();
+                                editPef.commit();*/
 
                             }
                             if(rempass.isChecked()){
-                                SharedPreferences.Editor editPef = spref.edit();
-                                editPef.putString("input_phone", input_password);
-                                editPef.commit();
+                                SharedPreferences spref1=getSharedPreferences("file1",Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor1 = spref1.edit();
+                                editor1.putString("Password",input_password );
+                                editor1.commit();
                             }
                             url = "http://rjtmobile.com/ansari/shopingcart/androidapp/shop_login.php?" +
                                     "mobile=" + input_username + "&password=" + input_password;
-
-                            // JsonParser();
                             SignIn(url);
                         } else {
                             Toast.makeText(LoginActivity.this, "Password Should Be More Than 8 Characters", Toast.LENGTH_SHORT).show();
@@ -131,8 +153,7 @@ public class LoginActivity extends AppCompatActivity {
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, mFragment).commit();*/
-                Intent forgot_user = new Intent(LoginActivity.this, ForgotUsername.class);
-                startActivity(forgot_user);
+                Toast.makeText(LoginActivity.this,"Contact Customer Support",Toast.LENGTH_SHORT).show();
             }
         });
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -141,6 +162,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent forgot_password = new Intent(LoginActivity.this, ForgotPassword.class);
                 startActivity(forgot_password);
+                finish();
+            }
+        });
+        passreset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pass_reset = new Intent(LoginActivity.this, ResetPassword.class);
+                startActivity(pass_reset);
+                finish();
             }
         });
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -149,11 +179,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent register = new Intent(LoginActivity.this, Register.class);
                 startActivity(register);
+                finish();
             }
         });
         //--------------------------------------------------------------------------------------------------------------------------------------------------
-
-
+    }
     }
 
     private void SignIn(String url)
@@ -221,8 +251,9 @@ public class LoginActivity extends AppCompatActivity {
 
                     JSONObject jsonObject = jArray.getJSONObject(i);
                     String appapikey = jsonObject.getString("AppApiKey ");
-                    String msg = jsonObject.getString("msg");
+                    //String msg = jsonObject.getString("msg");
                     String UserID = jsonObject.getString("UserID");
+                    SharedPreferences spref =getSharedPreferences("file5", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = spref.edit();
                     editor.putString("AppApiKey",appapikey);
                     editor.putString("UserID",UserID);
@@ -230,8 +261,9 @@ public class LoginActivity extends AppCompatActivity {
 
                     if(mydata.contains("success")){
                         Toast.makeText(LoginActivity.this,"Successfully Logged in",Toast.LENGTH_LONG).show();
-                        Intent category_intent = new Intent(LoginActivity.this, ShopItems.class);
-                        startActivity(category_intent);
+                        Intent backbuttonpressed = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(backbuttonpressed);
+                        finish();
                     }
                     else if(mydata.contains("Mobile Number not register"))
                     {
@@ -241,8 +273,6 @@ public class LoginActivity extends AppCompatActivity {
                     {
                         Toast.makeText(LoginActivity.this,"incorrect password",Toast.LENGTH_LONG).show();
                     }
-
-
 
                 }
 
@@ -302,5 +332,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onBackPressed();
         Intent backbuttonpressed = new Intent(this, MainActivity.class);
         startActivity(backbuttonpressed);
+        finish();
     }
 }
